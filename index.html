@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>М² Для Семьи — Ремонт квартир в Ростове</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'Manrope', sans-serif;
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,.60), rgba(0,0,0,.78)),
+        url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2400&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      min-height: 100svh;
+    }
+
+    .glass {
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all .9s cubic-bezier(.16,1,.3,1);
+    }
+
+    .fade-up.active {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    .card-hover {
+      transition: .45s cubic-bezier(.16,1,.3,1);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-10px);
+    }
+
+    .shine {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shine::before {
+      content: '';
+      position: absolute;
+      inset: -180%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.18), transparent);
+      transform: rotate(20deg);
+      transition: 1s;
+    }
+
+    .shine:hover::before {
+      inset: 180%;
+    }
+
+    .gradient-orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(120px);
+      opacity: .2;
+      pointer-events: none;
+    }
+
+    .section-title {
+      font-size: clamp(42px, 7vw, 110px);
+      line-height: .92;
+      letter-spacing: -.06em;
+      font-weight: 800;
+    }
+
+    .mobile-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .premium-divider {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+    }
+
+    .luxury-shadow {
+      box-shadow: 0 20px 80px rgba(0,0,0,.35);
+    }
+
+    .sticky-showcase {
+      position: sticky;
+      top: 120px;
+    }
+
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 80px;
+      animation: marquee 28s linear infinite;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      body {
+        overflow-x: hidden;
+      }
+
+      header {
+        height: auto !important;
+      }
+
+      .max-w-7xl {
+        width: 100%;
+      }
+
+      nav {
+        display: none !important;
+      }
+
+      section {
+        overflow: hidden;
+      }
+
+      .hero {
+        min-height: 100svh;
+        background-position: center;
+        background-attachment: scroll;
+      }
+
+      h1 {
+        font-size: 58px !important;
+        line-height: .9 !important;
+        letter-spacing: -.06em !important;
+      }
+
+      h2,
+      .section-title {
+        font-size: 44px !important;
+        line-height: .95 !important;
+      }
+
+      p {
+        font-size: 16px !important;
+        line-height: 1.7 !important;
+      }
+
+      .mobile-grid,
+      .grid,
+      .lg\:grid-cols-2,
+      .lg\:grid-cols-3,
+      .lg\:grid-cols-4 {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+      }
+
+      .mobile-image {
+        height: 320px !important;
+      }
+
+      .mobile-card,
+      .glass,
+      .bg-white {
+        border-radius: 28px !important;
+      }
+
+      .mobile-button {
+        width: 100%;
+      }
+
+      .mobile-padding,
+      .px-6,
+      .md\:px-10 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
+      .py-32 {
+        padding-top: 90px !important;
+        padding-bottom: 90px !important;
+      }
+
+      .gap-20 {
+        gap: 48px !important;
+      }
+
+      .sticky-showcase {
+        position: relative !important;
+        top: auto !important;
+      }
+
+      .parallax {
+        transform: none !important;
+      }
+
+      .gradient-orb {
+        display: none;
+      }
+
+      .marquee-track {
+        gap: 40px;
+      }
+
+      .text-6xl {
+        font-size: 46px !important;
+      }
+
+      .h-\[820px\] {
+        height: 360px !important;
+      }
+
+      .overflow-hidden img {
+        border-radius: 24px;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-[#ef6400] selection:text-white">
+
+<div id="loader" class="fixed inset-0 z-[9999] bg-[#0b0b0b] flex items-center justify-center transition duration-700">
+  <div class="text-center">
+    <div class="text-5xl md:text-7xl font-extrabold tracking-[-0.08em] text-white">
+      М²
+    </div>
+    <div class="mt-4 text-white/40 tracking-[0.35em] text-sm uppercase">
+      Premium Interior
+    </div>
+  </div>
+</div>
+
+<header class="fixed top-0 left-0 w-full z-50 border-b border-white/5 bg-black/30 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+
+    <div class="text-2xl md:text-3xl font-extrabold tracking-tight">
+      М² ДЛЯ СЕМЬИ
+    </div>
+
+    <nav class="hidden lg:flex items-center gap-10 text-white/70 font-medium">
+      <a href="#about" class="hover:text-[#ef6400] transition">О компании</a>
+      <a href="#projects" class="hover:text-[#ef6400] transition">Проекты</a>
+      <a href="#advantages" class="hover:text-[#ef6400] transition">Преимущества</a>
+      <a href="#contacts" class="hover:text-[#ef6400] transition">Контакты</a>
+    </nav>
+
+    <button class="hidden md:block h-12 px-7 rounded-2xl bg-[#ef6400] text-white font-bold hover:scale-105 transition">
+      Оставить заявку
+    </button>
+
+  </div>
+</header>
+
+<section class="hero min-h-screen relative overflow-hidden flex items-center">
+
+  <div class="gradient-orb bg-[#ef6400] w-[500px] h-[500px] top-[-120px] left-[-120px]"></div>
+  <div class="gradient-orb bg-white w-[400px] h-[400px] bottom-[-120px] right-[-120px]"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-10 relative z-10 pt-32 pb-20 w-full">
+
+    <div class="max-w-4xl fade-up">
+
+      <div class="glass inline-flex items-center px-5 py-3 rounded-full text-sm font-semibold text-white/80 mb-8">
+        Ремонт квартир в Ростове под ключ
+      </div>
+
+      <h1 class="text-5xl md:text-[110px] font-extrabold leading-[0.88] tracking-[-0.06em]">
+        Дорогой
+        <span class="block text-[#ef6400] parallax">ремонт</span>
+        без хаоса
+      </h1>
+
+      <p class="mt-10 text-xl md:text-2xl text-white/70 leading-relaxed max-w-3xl">
+        Ремонт квартир под ключ в Ростове-на-Дону. Фиксируем цену в договоре, присылаем фотоотчёты, соблюдаем сроки и сдаём объект без скрытых доплат.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-5 mt-12">
+
+        <button class="h-16 px-10 rounded-2xl bg-[#ef6400] text-white font-bold text-lg hover:scale-105 transition shadow-2xl">
+          Рассчитать стоимость
+        </button>
+
+        <button class="glass h-16 px-10 rounded-2xl text-white font-semibold hover:bg-white/10 transition">
+          Смотреть проекты
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="bg-[#ef6400] py-10 px-6 md:px-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+    <div class="bg-white rounded-[30px] p-7 mobile-card text-black card-hover shine">
+      <div class="text-4xl font-extrabold">10800₽</div>
+      <div class="mt-2 text-gray-500">от за м²</div>
+    </div>
+
+    <div class="bg-white rounded-[30px] p-7 mobile-card text-black card-hover shine">
+      <div class="text-4xl font-extrabold">3 года</div>
+      <div class="mt-2 text-gray-500">гарантии</div>
+    </div>
+
+    <div class="bg-white rounded-[30px] p-7 mobile-card text-black card-hover shine">
+      <div class="text-4xl font-extrabold">240+</div>
+      <div class="mt-2 text-gray-500">объектов</div>
+    </div>
+
+    <div class="bg-white rounded-[30px] p-7 mobile-card text-black card-hover shine">
+      <div class="text-4xl font-extrabold">Фото/Видео</div>
+      <div class="mt-2 text-gray-500">контроль этапов</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about" class="py-32 px-6 md:px-10 bg-[#111] relative overflow-hidden">
+
+  <div class="max-w-7xl mx-auto mobile-grid grid lg:grid-cols-2 gap-20 items-center">
+
+    <div class="fade-up">
+      <div class="text-[#ef6400] uppercase tracking-[0.3em] text-sm font-bold mb-6">
+        О КОМПАНИИ
+      </div>
+
+      <h2 class="text-4xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.04em]">
+        Создаём
+        <span class="text-[#ef6400] block">интерьеры,</span>
+        а не просто ремонт
+      </h2>
+    </div>
+
+    <div class="fade-up">
+      <p class="text-xl text-white/70 leading-relaxed mb-8">
+        Берём на себя весь цикл ремонта: демонтаж, электрику, сантехнику, плитку, покраску, чистовую отделку и уборку после работ. Вы получаете готовую квартиру без постоянного контроля строителей.
+      </p>
+
+      <div class="grid grid-cols-2 gap-5">
+
+        <div class="glass rounded-[30px] p-7">
+          <div class="text-3xl font-extrabold">Договор</div>
+          <div class="mt-3 text-white/60 leading-relaxed">
+            Все условия фиксируются до начала работ.
+          </div>
+        </div>
+
+        <div class="glass rounded-[30px] p-7">
+          <div class="text-3xl font-extrabold">Смета</div>
+          <div class="mt-3 text-white/60 leading-relaxed">
+            Цена не меняется в процессе ремонта.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="projects" class="bg-[#f5f5f5] text-black py-32 px-6 md:px-10">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="flex flex-col lg:flex-row justify-between gap-10 mb-16 fade-up">
+
+      <div>
+        <div class="text-[#ef6400] uppercase tracking-[0.3em] text-sm font-bold mb-6">
+          НАШИ ПРОЕКТЫ
+        </div>
+
+        <h2 class="text-4xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.05em]">
+          Визуал,
+          который
+          хочется сохранить
+        </h2>
+      </div>
+
+      <p class="text-xl text-gray-600 max-w-2xl leading-relaxed">
+        Подбираем материалы, освещение, цвета и решения так, чтобы квартира выглядела дорого, современно и оставалась практичной для жизни.
+      </p>
+
+    </div>
+
+    <div class="mobile-grid grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+      <div class="overflow-hidden rounded-[40px] shadow-2xl card-hover shine fade-up">
+        <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=2200&auto=format&fit=crop" class="mobile-image h-[560px] w-full object-cover hover:scale-105 transition duration-700">
+      </div>
+
+      <div class="overflow-hidden rounded-[40px] shadow-2xl card-hover shine fade-up">
+        <img src="https://images.unsplash.com/photo-1616594039964-3bcb3e9e6f53?q=80&w=2200&auto=format&fit=crop" class="mobile-image h-[560px] w-full object-cover hover:scale-105 transition duration-700">
+      </div>
+
+      <div class="overflow-hidden rounded-[40px] shadow-2xl card-hover shine fade-up">
+        <img src="https://images.unsplash.com/photo-1615529162924-f8605388468a?q=80&w=2200&auto=format&fit=crop" class="mobile-image h-[560px] w-full object-cover hover:scale-105 transition duration-700">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="advantages" class="py-32 px-6 md:px-10 bg-[#111] overflow-hidden relative">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="mb-20 fade-up">
+      <div class="text-[#ef6400] uppercase tracking-[0.3em] text-sm font-bold mb-6">
+        ПОЧЕМУ МЫ
+      </div>
+
+      <h2 class="text-4xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.05em] max-w-5xl">
+        Прозрачный ремонт
+        без строительного стресса
+      </h2>
+    </div>
+
+    <div class="mobile-grid grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="glass rounded-[34px] p-8 mobile-card card-hover fade-up border border-white/10 luxury-shadow">
+        <div class="text-[#ef6400] text-6xl font-extrabold">01</div>
+        <h3 class="mt-10 text-3xl font-extrabold leading-tight">
+          Работаем по договору
+        </h3>
+        <p class="mt-5 text-white/60 leading-relaxed text-lg">
+          Сроки, этапы, материалы и стоимость фиксируются заранее.
+        </p>
+      </div>
+
+      <div class="glass rounded-[34px] p-8 mobile-card card-hover fade-up border border-white/10 luxury-shadow">
+        <div class="text-[#ef6400] text-6xl font-extrabold">02</div>
+        <h3 class="mt-10 text-3xl font-extrabold leading-tight">
+          Фиксированная смета
+        </h3>
+        <p class="mt-5 text-white/60 leading-relaxed text-lg">
+          Никаких неожиданных доплат в процессе ремонта.
+        </p>
+      </div>
+
+      <div class="glass rounded-[34px] p-8 mobile-card card-hover fade-up border border-white/10 luxury-shadow">
+        <div class="text-[#ef6400] text-6xl font-extrabold">03</div>
+        <h3 class="mt-10 text-3xl font-extrabold leading-tight">
+          Фотоотчёты
+        </h3>
+        <p class="mt-5 text-white/60 leading-relaxed text-lg">
+          После каждого этапа отправляем фото и видео.
+        </p>
+      </div>
+
+      <div class="glass rounded-[34px] p-8 mobile-card card-hover fade-up border border-white/10 luxury-shadow">
+        <div class="text-[#ef6400] text-6xl font-extrabold">04</div>
+        <h3 class="mt-10 text-3xl font-extrabold leading-tight">
+          Гарантия 3 года
+        </h3>
+        <p class="mt-5 text-white/60 leading-relaxed text-lg">
+          Бесплатно исправим любые недочёты по гарантии.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="bg-[#f5f5f5] text-black py-32 px-6 md:px-10">
+
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+    <div class="fade-up">
+
+      <div class="text-[#ef6400] uppercase tracking-[0.3em] text-sm font-bold mb-6">
+        ЭТАПЫ РАБОТЫ
+      </div>
+
+      <h2 class="text-4xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.05em]">
+        Полный контроль
+        на каждом этапе
+      </h2>
+
+      <div class="mt-14 space-y-6">
+
+        <div class="bg-[#ef6400] text-white rounded-[30px] p-8 shadow-2xl">
+          <div class="text-3xl font-extrabold">Что входит в ремонт под ключ</div>
+          <div class="mt-6 grid sm:grid-cols-2 gap-4 text-lg">
+            <div>• Демонтажные работы</div>
+            <div>• Электрика</div>
+            <div>• Сантехника</div>
+            <div>• Плиточные работы</div>
+            <div>• Штукатурка и покраска</div>
+            <div>• Укладка пола</div>
+            <div>• Натяжные потолки</div>
+            <div>• Финальная уборка</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[30px] p-7 mobile-card shadow-xl flex gap-6 items-start card-hover">
+          <div class="text-[#ef6400] text-4xl font-extrabold">01</div>
+          <div>
+            <div class="text-2xl font-extrabold">Заявка и консультация</div>
+            <div class="mt-2 text-gray-600 leading-relaxed">Обсуждаем ваш проект, сроки и пожелания.</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[30px] p-7 mobile-card shadow-xl flex gap-6 items-start card-hover">
+          <div class="text-[#ef6400] text-4xl font-extrabold">02</div>
+          <div>
+            <div class="text-2xl font-extrabold">Замер объекта</div>
+            <div class="mt-2 text-gray-600 leading-relaxed">Выезжаем на объект и делаем точный расчёт.</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[30px] p-7 mobile-card shadow-xl flex gap-6 items-start card-hover">
+          <div class="text-[#ef6400] text-4xl font-extrabold">03</div>
+          <div>
+            <div class="text-2xl font-extrabold">Договор и смета</div>
+            <div class="mt-2 text-gray-600 leading-relaxed">Фиксируем все условия официально.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="fade-up">
+      <div class="relative overflow-hidden rounded-[40px] luxury-shadow">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2200&auto=format&fit=crop" class="mobile-image rounded-[40px] shadow-2xl h-[820px] object-cover w-full hover:scale-105 transition duration-1000">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-white">
+          <div class="text-3xl md:text-5xl font-extrabold leading-tight max-w-lg">
+            Полный контроль ремонта на каждом этапе
+          </div>
+
+          <div class="mt-5 text-white/70 text-lg leading-relaxed max-w-xl">
+            Фотоотчёты, прозрачная смета, контроль сроков и персональный менеджер проекта.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="bg-[#0b0b0b] py-14 overflow-hidden border-y border-white/5">
+  <div class="marquee">
+    <div class="marquee-track text-[12vw] md:text-[6vw] font-extrabold tracking-[-0.06em] text-white/5 uppercase">
+      <span>Premium Renovation</span>
+      <span>Interior Design</span>
+      <span>Modern Apartments</span>
+      <span>М² Для Семьи</span>
+      <span>Premium Renovation</span>
+      <span>Interior Design</span>
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#111] py-32 px-6 md:px-10 overflow-hidden relative">
+
+  <div class="gradient-orb bg-[#ef6400] w-[420px] h-[420px] left-[-120px] top-[100px]"></div>
+
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-20 items-start">
+
+    <div class="sticky-showcase fade-up">
+      <div class="text-[#ef6400] uppercase tracking-[0.3em] text-sm font-bold mb-6">
+        ДО / ПОСЛЕ
+      </div>
+
+      <h2 class="section-title max-w-xl">
+        Разница
+        видна
+        сразу
+      </h2>
+
+      <p class="mt-8 text-xl text-white/60 leading-relaxed max-w-lg">
+        Полностью меняем восприятие квартиры — от старого уставшего пространства до современного premium-интерьера.
+      </p>
+    </div>
+
+    <div class="space-y-8">
+
+      <div class="glass rounded-[40px] p-5 md:p-8 luxury-shadow fade-up">
+        <div class="grid md:grid-cols-2 gap-5">
+
+          <div class="overflow-hidden rounded-[30px]">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2200&auto=format&fit=crop" class="h-[320px] w-full object-cover hover:scale-105 transition duration-700">
+          </div>
+
+          <div class="overflow-hidden rounded-[30px]">
+            <img src="https://images.unsplash.com/photo-1617098474202-0d0d7f60f0b2?q=80&w=2200&auto=format&fit=crop" class="h-[320px] w-full object-cover hover:scale-105 transition duration-700">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="glass rounded-[40px] p-8 luxury-shadow fade-up">
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+
+          <div>
+            <div class="text-5xl font-extrabold text-[#ef6400]">14</div>
+            <div class="mt-3 text-white/60">дней средний старт работ</div>
+          </div>
+
+          <div>
+            <div class="text-5xl font-extrabold text-[#ef6400]">97%</div>
+            <div class="mt-3 text-white/60">клиентов рекомендуют нас</div>
+          </div>
+
+          <div>
+            <div class="text-5xl font-extrabold text-[#ef6400]">0</div>
+            <div class="mt-3 text-white/60">скрытых платежей</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contacts" class="py-32 px-6 md:px-10 bg-[#ef6400] text-white relative overflow-hidden">
+
+  <div class="gradient-orb bg-white w-[500px] h-[500px] bottom-[-200px] right-[-100px]"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-20 items-center">
+
+    <div class="fade-up">
+      <div class="uppercase tracking-[0.3em] text-sm font-bold mb-6">
+        ОСТАВИТЬ ЗАЯВКУ
+      </div>
+
+      <h2 class="text-4xl md:text-7xl font-extrabold leading-[0.95] tracking-[-0.05em]">
+        Получите расчёт
+        стоимости ремонта
+      </h2>
+
+      <p class="mt-10 text-2xl text-white/80 leading-relaxed max-w-2xl">
+        Оставьте имя и номер телефона — мы свяжемся с вами и подготовим расчёт стоимости ремонта квартиры.
+      </p>
+    </div>
+
+    <div class="bg-white rounded-[40px] p-8 md:p-10 text-black shadow-2xl fade-up">
+
+      <div class="space-y-5">
+
+        <input type="text" placeholder="Ваше имя" class="w-full h-16 rounded-2xl px-6 border border-black/10 bg-[#f5f5f5] outline-none">
+
+        <input type="tel" placeholder="Номер телефона" class="w-full h-16 rounded-2xl px-6 border border-black/10 bg-[#f5f5f5] outline-none">
+
+        <textarea placeholder="Комментарий" class="w-full h-40 rounded-2xl px-6 py-5 border border-black/10 bg-[#f5f5f5] outline-none resize-none"></textarea>
+
+        <button class="mobile-button w-full h-16 rounded-2xl bg-[#ef6400] text-white text-lg font-extrabold hover:scale-[1.02] transition">
+          Отправить заявку
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="bg-[#0a0a0a] py-10 px-6 md:px-10 border-t border-white/5">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+
+    <div class="text-2xl font-extrabold">
+      М² ДЛЯ СЕМЬИ
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-8 text-white/50">
+      <span>Ростов-на-Дону</span>
+      <span>Ремонт квартир под ключ</span>
+      <span>Premium Interior</span>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').style.opacity = '0';
+      document.getElementById('loader').style.pointerEvents = 'none';
+    }, 900);
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
+  });
+
+  const parallaxItems = document.querySelectorAll('.parallax');
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    parallaxItems.forEach((item, index) => {
+      const speed = 0.08 + (index * 0.02);
+      item.style.transform = `translateY(${scrollY * speed}px)`;
+    });
+  });
+
+</script>
+
+</body>
+</html>
